@@ -1,0 +1,429 @@
+@charset "UTF-8";
+
+/* ===== Global ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --pink-light: #fff0f5;
+  --pink-soft: #ffd6e7;
+  --pink-main: #ff7eb3;
+  --pink-deep: #c0397a;
+  --lavender: #f3e8ff;
+  --lavender-mid: #d8b4fe;
+  --text-dark: #3d2f2b;
+  --text-mid: #7a4d63;
+  --text-soft: #b07a96;
+  --white: #ffffff;
+}
+
+body {
+  background: linear-gradient(135deg, #fff0f5 0%, #f9f0ff 50%, #fff0f5 100%);
+  min-height: 100vh;
+  padding: 40px 16px 60px;
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+/* 背景装飾 */
+body::before {
+  content: "🌸";
+  position: fixed;
+  top: 40px;
+  left: 5%;
+  font-size: 80px;
+  opacity: 0.3;
+  pointer-events: none;
+  animation: floatA 6s ease-in-out infinite;
+}
+
+body::after {
+  content: "🌸";
+  position: fixed;
+  bottom: 40px;
+  right: 5%;
+  font-size: 80px;
+  opacity: 0.3;
+  pointer-events: none;
+  animation: floatB 7s ease-in-out infinite;
+}
+
+@keyframes floatA {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(5deg);
+  }
+}
+
+@keyframes floatB {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(5deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(-5deg);
+  }
+}
+
+/* ===== Page Title ===== */
+.page-title {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.page-title h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-title p {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
+/* ===== Card ===== */
+.form-card {
+  max-width: 640px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 95px;
+  box-shadow: 0 8px 30px rgba(168, 85, 247, 0.2);
+  padding: 40px 40px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  pointer-events: none;
+}
+
+/* ===== Account Title ===== */
+.form-main-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 2px dashed violet;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.form-main-title::before,
+.form-main-title::after {
+  content: "✿";
+  color: violet;
+}
+
+/* ===== Section ===== */
+.form-section {
+  margin-bottom: 36px;
+}
+
+.form-section h2 {
+  color: var(--text-dark);
+  background: var(--lavender);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  display: inline-flex;
+  box-shadow: 0 3px 10px rgba(255, 126, 179, 0.3);
+}
+
+/* ===== Field ===== */
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ===== Input / Select ===== */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: 11px 16px;
+  border: 2px solid #d2bae7;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text-dark);
+  background: #fce5f5;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff7eb3' d='M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z'/%3E%3C/svg%3E") 12 12, text;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+select:focus {
+  border-color: var(--pink-main);
+}
+
+/* 生年月日 */
+.birthdate-row {
+  display: flex;
+  gap: 10px;
+}
+
+.birthdate-row select {
+  flex: 1;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* ===== Radio — Heart Style ===== */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff7eb3' d='M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z'/%3E%3C/svg%3E") 12 12, pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  background: var(--pink-light);
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--pink-soft);
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.radio-group label:hover {
+  border-color: var(--pink-main);
+  background: var(--pink-soft);
+  color: var(--pink-deep);
+  transform: scale(1.04);
+}
+
+
+.radio-group input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Heart via clip-path — unchecked */
+.radio-group input[type="radio"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--pink-soft);
+  clip-path: path('M11 4C8.8 1.8 5 2.1 3 4.6 1.1 7 1.8 10.6 4 12.8l7 7 7-7c2.2-2.2 2.9-5.8 1-8.2C17 2.1 13.2 1.8 11 4z');
+  transition: background 0.2s, transform 0.2s;
+}
+
+/* Heart checked */
+.radio-group input[type="radio"]:checked::before {
+  background: var(--pink-main);
+  transform: scale(1.15);
+}
+
+
+.radio-group input[type="radio"]:checked+span {
+  color: var(--pink-deep);
+  font-weight: 700;
+}
+
+.radio-group label:has(input:checked) {
+  border-color: var(--pink-main);
+  background: var(--pink-soft);
+  box-shadow: 0 3px 10px rgba(255, 126, 179, 0.25);
+}
+
+/* ===== Checkbox-style subscription ===== */
+.check-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.check-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff7eb3' d='M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z'/%3E%3C/svg%3E") 12 12, pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  background: var(--lavender);
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--lavender-mid);
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.check-group label:hover {
+  border-color: var(--lavender-mid);
+  background: var(--lavender);
+  transform: scale(1.04);
+}
+
+.check-group input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.check-group input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--lavender-mid);
+  clip-path: path('M11 4C8.8 1.8 5 2.1 3 4.6 1.1 7 1.8 10.6 4 12.8l7 7 7-7c2.2-2.2 2.9-5.8 1-8.2C17 2.1 13.2 1.8 11 4z');
+  transition: background 0.2s, transform 0.2s;
+}
+
+.check-group input[type="checkbox"]:checked::before {
+  background: #a855f7;
+  transform: scale(1.15);
+}
+
+.check-group label:has(input:checked) {
+  border-color: #a855f7;
+  background: #f3e8ff;
+  box-shadow: 0 3px 10px rgba(168, 85, 247, 0.2);
+}
+
+/* ===== Two columns ===== */
+.field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+/* ===== Submit Button ===== */
+.submit-wrap {
+  text-align: center;
+  margin-top: 36px;
+}
+
+.btn-submit {
+  display: inline-block;
+  padding: 14px 52px;
+  color: var(--white);
+  background-color: var(--pink-deep);
+  font-size: 1.3rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 5px 20px rgba(255, 126, 179, 0.4);
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff7eb3' d='M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z'/%3E%3C/svg%3E") 12 12, pointer;
+  letter-spacing: 0.1em;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.btn-submit:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(255, 126, 179, 0.5);
+}
+
+.btn-submit:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ===== Required badge ===== */
+.required {
+  font-size: 0.7rem;
+  color: violet;
+  background: #fff0f5;
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-left: 6px;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+/* ===== Footer deco ===== */
+.form-footer {
+  text-align: center;
+  margin-top: 24px;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+}
+
+/* ===== Hover cursor on interactive elements ===== */
+a,
+button,
+[role="button"],
+input[type="submit"],
+select,
+label {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff7eb3' d='M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z'/%3E%3C/svg%3E") 12 12, pointer;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 520px) {
+  .form-card {
+    padding: 28px 20px 36px;
+  }
+
+  .field-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .page-title h1 {
+    font-size: 1.5rem;
+  }
+}
